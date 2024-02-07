@@ -9,8 +9,8 @@
  */
 class Plato(
     nombre: String,
-    private var precio: Double,
-    private var tiempoPreparacion: Int,
+    precio: Double,
+    tiempoPreparacion: Int,
     private val ingredientes: MutableList<String>
 ) {
 
@@ -20,7 +20,20 @@ class Plato(
             field = value
         }
 
+    private var precio: Double = precio
+        set(value) {
+            require(precio > 0.0) { "El campo 'precio' debe ser superior a 0, queremos hacernos ricos." }
+            field = value
+        }
+
+    private var tiempoPreparacion: Int = tiempoPreparacion
+        set(value) {
+            require(tiempoPreparacion > 1) { "El campo 'tiempo' no puede ser igual o menor a 1, no hacemos magia." }
+            field = value
+        }
+
     init {
+        this.nombre = nombre
         require(precio > 0.0) { "El campo 'precio' debe ser superior a 0, queremos hacernos ricos." }
         require(tiempoPreparacion > 1) { "El campo 'tiempo' no puede ser igual o menor a 1, no hacemos magia." }
     }
@@ -34,12 +47,11 @@ class Plato(
      */
     fun agregarIngredientes(ingrediente: String) {
         require(ingrediente.isBlank()) { "El campo 'ingrediente no puede estar vacío." }
-        if (!ingrediente.contains(ingrediente)) {
             ingredientes.add(ingrediente)
-        }
     }
 
     override fun toString(): String {
         return ("$nombre ($tiempoPreparacion min.) -> $precio ($ingredientes)")
+        //OJO CON EL REPLACE AL FINAL DE INGREDIENTES, TIENE Q PONER 'Y' Y NO ','
     }
 }

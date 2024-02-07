@@ -1,4 +1,4 @@
-/*
+
 fun main() {
     // Inicialización de mesas
     val mesas = listOf(
@@ -98,4 +98,3 @@ fun main() {
         println("No existen platos.")
     }
 }
-*/

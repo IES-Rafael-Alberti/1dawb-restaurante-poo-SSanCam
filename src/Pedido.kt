@@ -5,7 +5,7 @@
  *   - para calcular automáticamente los números de los pedidos.
  *
  */
-class Pedido(numero: Int, platos: MutableList<Plato>, estado: String) {
+class Pedido(numero: Int, private val platos: MutableList<Plato>, estado: String = "Pendiente") {
     /*
        El número de pedido será calculado automáticamente al crear cada pedido con respecto a un contador
        - que existirá en la clase Pedido.
@@ -18,7 +18,7 @@ class Pedido(numero: Int, platos: MutableList<Plato>, estado: String) {
             field = value
         }
 
-    private var estado: String = "Pendiente"
+    private var estado: String = estado
         set(value) {
             require(estado in ("pendiente, preparación, listo, servido")) { "Se desconoce el estado de preparación del plato." }
             field = value
@@ -33,7 +33,7 @@ class Pedido(numero: Int, platos: MutableList<Plato>, estado: String) {
      */
     fun agregarPlato(plato: Plato) {
         TODO("Añade un nuevo plato al pedido.")
-
+        platos.add(plato)
     }
 
     /**
