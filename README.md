@@ -15,31 +15,37 @@
 
 - **Métodos:**
   - `agregarIngrediente(ingrediente: String)`: Añade un nuevo ingrediente a la lista de ingredientes del plato.
-  - `toString()`: Retornar la información del plato (por ejemplo, "Hamburguesa (8 min.) -> 8.99€ (carne, huevo, queso, pan y tomate)")
+  - `toString()`: Retornar la información del plato (por ejemplo, "Hamburguesa (8 min.) -> 8.99€ (carne, huevo, queso, 
+  - pan y tomate)")
 
 **Premisas y Requisitos:**
 - El nombre del plato no puede ser vacío.
 - El precio del plato debe ser mayor que 0.
 - El tiempo de preparación no podrá ser igual o inferior a 1.
 - Un ingrediente no puede ser vacío.
-- Considerar el uso de propiedades de Kotlin para validar automáticamente estas restricciones tanto al crear un plato cómo al modificar sus valores.
+- Considerar el uso de propiedades de Kotlin para validar automáticamente estas restricciones tanto al crear un plato 
+- cómo al modificar sus valores.
 
 #### 2. Clase Pedido
 - **Responsabilidades:**
   - Mantener un registro de los platos pedidos por un cliente.
-  - `contPedidos`: Int - No pertenece a ningún pedido en concreto, sino que es un valor global a todos y se utilizará para calcular automáticamente los números de los pedidos.
+  - `contPedidos`: Int - No pertenece a ningún pedido en concreto, sino que es un valor global a todos y se utilizará 
+  - para calcular automáticamente los números de los pedidos.
 
 - **Propiedades:**
-  - `numero`: Int - El número de pedido será calculado automáticamente al crear cada pedido con respecto a un contador que existirá en la clase Pedido.
+  - `numero`: Int - El número de pedido será calculado automáticamente al crear cada pedido con respecto a un contador 
+  - que existirá en la clase Pedido.
   - `platos`: List<Plato> - Lista de platos que componen el pedido.
-  - `estado`: String - Estado del pedido (por ejemplo, "pendiente", "preparación", "listo" y "servido"). Por defecto, todo pedido estará en estado pendiente.
+  - `estado`: String - Estado del pedido (por ejemplo, "pendiente", "preparación", "listo" y "servido"). Por defecto, 
+  - todo pedido estará en estado pendiente.
 
 - **Métodos:**
   - `agregarPlato(plato: Plato)`: Añade un nuevo plato al pedido.
   - `eliminarPlato(nombrePlato: String)`: Elimina un plato del pedido basándose en el nombre.
   - `calcularPrecio()`: Calcula el precio total del pedido sumando los precios de cada plato.
   - `calcularTiempo()`: Calcula el tiempo total de preparación sumando el tiempo de preparación de cada plato.
-  - `toString()`: Retornar la información del pedido utilizando el número de mesa, el método toString() de cada plato y su estado. (por ejemplo, "Hamburguesa (8 min.) -> 8.99€ (carne, huevo, queso, pan y tomate)")
+  - `toString()`: Retornar la información del pedido utilizando el número de mesa, el método toString() de cada plato 
+  - y su estado. (por ejemplo, "Hamburguesa (8 min.) -> 8.99€ (carne, huevo, queso, pan y tomate)")
 
 ### Bloque 2: Gestión de Mesas y Sistema de Gestión de Restaurante
 
@@ -67,11 +73,18 @@
   - `mesas`: List<Mesa> - Lista de todas las mesas en el restaurante.
 
 - **Métodos:**
-  - `realizarPedido(numeroMesa: Int, pedido: Pedido)`: Asocia un nuevo pedido a una mesa. Debe verificar que la mesa esté ocupada antes de asociar el pedido.
-  - `cerrarPedido(numeroMesa: Int, numeroPedido: Int?)`: Si el númeroPedido es null, cambia el estado del último pedido de una mesa a "servido". Si le llega un numeroPedido, entonces debe buscar el pedido con dicho número y cambiar su estado a "servido".
+  - `realizarPedido(numeroMesa: Int, pedido: Pedido)`: Asocia un nuevo pedido a una mesa. Debe verificar que la mesa 
+      esté ocupada antes de asociar el pedido.
+  - 
+    - `cerrarPedido(numeroMesa: Int, numeroPedido: Int?)`: Si el númeroPedido es null, cambia el estado del último pedido 
+      de una mesa a "servido". Si le llega un numeroPedido, entonces debe buscar el pedido con dicho número y cambiar su estado a "servido".
+    - 
   - `cerrarMesa(numeroMesa: Int)`: Si todos los pedidos están servidos, libera la mesa.
+  - 
   - `buscarPlatos()`: Retorna una lista con el nombre de los platos pedidos. Si no hay ninguno retorna null.
+  - 
   - `contarPlato(nombre: String)`: Cuenta el número de veces que se ha pedido un plato. Si no hay ninguno retorna null.
+  - 
   - `buscarPlatoMasPedido()`: Busca y retorna el o los platos más pedidos. Si no hay ninguno retorna null. Utiliza los dos métodos anteriores.
 
 ***NOTA***: Muy útiles para esta clase los siguientes métodos que podéis investigar... find{}, let{}, lastOrNull() y all{}.
