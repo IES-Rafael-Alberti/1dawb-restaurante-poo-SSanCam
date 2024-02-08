@@ -7,13 +7,6 @@
  *
  */
 class Pedido(numero: Int, private val platos: MutableList<Plato>, estado: String = "Pendiente") {
-    /*
-       El número de pedido será calculado automáticamente al crear cada pedido con respecto a un contador
-       - que existirá en la clase Pedido.
-       fun contadorPedido(){
-       TODO("Irá sumando todos los pedidos que se realicen.")
-       }
-       */
     var numero: Int = numero
         set(value) {
             field = value
@@ -24,6 +17,15 @@ class Pedido(numero: Int, private val platos: MutableList<Plato>, estado: String
             require(estado in ("pendiente, preparación, listo, servido")) { "Se desconoce el estado de preparación del plato." }
             field = value
         }
+
+    companion object {
+        private var contadorPedidos = 0
+    }
+
+    init {
+        contadorPedidos++
+        this.numero = contadorPedidos
+    }
 
     //METODOS DE CLASE:
     /**

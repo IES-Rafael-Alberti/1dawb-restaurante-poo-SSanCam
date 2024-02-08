@@ -8,13 +8,8 @@
  * @param pedidos: List<Pedido> - Lista de pedidos realizados por la mesa.
  *
  */
-class Mesa(numero: Int, capacidad: Int, estado: String, pedidos: List<Pedido>) {
+class Mesa(var numero: Int, capacidad: Int, estado: String, private var pedidos: MutableList<Pedido>) {
 
-    var numero: Int = numero
-
-        set(value) {
-            field = value
-        }
     var capacidad: Int = capacidad
         set(value) {
             require(capacidad in 1..<6) { "Las mesas tienen una capacidad máxima para 6 comensales." }
@@ -23,12 +18,6 @@ class Mesa(numero: Int, capacidad: Int, estado: String, pedidos: List<Pedido>) {
     var estado: String = estado
         set(value) {
             require(estado !in listOf("libre", "reservado", "ocupado")) { "Se desconoce el estado de la mesa." }
-            field = value
-        }
-
-    var pedidos: List<Pedido> = pedidos
-        set(value) {
-
             field = value
         }
 
@@ -65,6 +54,6 @@ class Mesa(numero: Int, capacidad: Int, estado: String, pedidos: List<Pedido>) {
      *
      */
     fun agregarPedido(pedido: Pedido) {
-
+        pedidos.add(pedido)
     }
 }
