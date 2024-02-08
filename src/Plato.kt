@@ -11,29 +11,28 @@ class Plato(
     nombre: String,
     precio: Double,
     tiempoPreparacion: Int,
-    private val ingredientes: MutableList<String>
+    val ingredientes: MutableList<String>
 ) {
 
-    private var nombre: String = nombre
+    var nombre: String = nombre
         set(value) {
             require(nombre.isBlank()) { "El campo 'nombre' no puede estar vacío para un plato." }
             field = value
         }
 
-    private var precio: Double = precio
+    var precio: Double = precio
         set(value) {
             require(precio > 0.0) { "El campo 'precio' debe ser superior a 0, queremos hacernos ricos." }
             field = value
         }
 
-    private var tiempoPreparacion: Int = tiempoPreparacion
+    var tiempoPreparacion: Int = tiempoPreparacion
         set(value) {
             require(tiempoPreparacion > 1) { "El campo 'tiempo' no puede ser igual o menor a 1, no hacemos magia." }
             field = value
         }
 
     init {
-        this.nombre = nombre
         require(precio > 0.0) { "El campo 'precio' debe ser superior a 0, queremos hacernos ricos." }
         require(tiempoPreparacion > 1) { "El campo 'tiempo' no puede ser igual o menor a 1, no hacemos magia." }
     }
@@ -45,13 +44,13 @@ class Plato(
      *
      * @param ingrediente Es el ingrediente que vamos a agregar a la lista de ingredientes del plato.
      */
-    fun agregarIngredientes(ingrediente: String) {
+    fun agregarIngrediente(ingrediente: String) {
         require(ingrediente.isBlank()) { "El campo 'ingrediente no puede estar vacío." }
-            ingredientes.add(ingrediente)
+        ingredientes.add(ingrediente)
     }
 
     override fun toString(): String {
-        return ("$nombre ($tiempoPreparacion min.) -> $precio ($ingredientes)")
-        //OJO CON EL REPLACE AL FINAL DE INGREDIENTES, TIENE Q PONER 'Y' Y NO ','
+        return ("$nombre ($tiempoPreparacion min.) -> $precio (${ingredientes.joinToString { " y " }}) y ")
     }
+
 }

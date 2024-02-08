@@ -13,7 +13,7 @@ class Pedido(numero: Int, private val platos: MutableList<Plato>, estado: String
        TODO("Irá sumando todos los pedidos que se realicen.")
        }
        */
-    private var numero: Int = numero
+    var numero: Int = numero
         set(value) {
             field = value
         }
@@ -32,7 +32,6 @@ class Pedido(numero: Int, private val platos: MutableList<Plato>, estado: String
      * @return Añade un nuevo plato al pedido.
      */
     fun agregarPlato(plato: Plato) {
-        TODO("Añade un nuevo plato al pedido.")
         platos.add(plato)
     }
 
@@ -43,35 +42,53 @@ class Pedido(numero: Int, private val platos: MutableList<Plato>, estado: String
      * @return El nombre del plato a eliminar de la lista de pedido.
      */
     fun eliminarPlato(nombrePlato: String) {
-        TODO("Elimina un plato del pedido basándose en el nombre.")
+        platos.removeIf { it.nombre == nombrePlato }
     }
 
     /**
      * Calcular precio:
      *
-     * @return Devuelve el precio final del pedido.
+     * @return "Calcula el precio total del pedido sumando los precios de cada plato."
+     *
      */
+    fun calcularPrecio(): Double {
+        var precioPedido = 0.0
 
-    fun calcularPrecio() {
-        TODO("Calcula el precio total del pedido sumando los precios de cada plato.")
+        for (plato in platos) {
+            precioPedido += plato.precio
+        }
+        return String.format("%.2f", precioPedido).toDouble()
     }
 
     /**
      * Calcular tiempo
      *
-     * @return El tiempo de preparación que dura cada plato.
+     * @return Calcula el tiempo total de preparación sumando el tiempo de preparación de cada plato.
      */
-    fun calcularTiempo() {
-        TODO("Calcula el tiempo total de preparación sumando el tiempo de preparación de cada plato.")
+    fun calcularTiempo(): Int {
+        var tiempoTotal = 0
+
+        for (plato in platos) {
+            tiempoTotal += plato.tiempoPreparacion
+        }
+        return tiempoTotal
     }
+
+    /**
+     * Retorna una representación en forma de cadena de caracteres del pedido, incluyendo la información de cada plato
+     * y su estado.
+     *
+     * @return Una cadena que representa el pedido, con cada plato seguido de su estado y sus detalles, formateados de la siguiente manera:
+     *         "Nombre del plato (Tiempo de preparación) -> Precio (Ingredientes)"
+     *         Por ejemplo: "Hamburguesa (8 min.) -> 8.99€ (carne, huevo, queso, pan y tomate)"
+     */
 
     override fun toString(): String {
-        TODO(
-            "Retornar la información del pedido utilizando el número de mesa, el método toString() de cada plato \n" +
-                    "  - y su estado. (por ejemplo, \"Hamburguesa (8 min.) -> 8.99€ (carne, huevo, queso, pan y tomate)\")\n"
-        )
+        val stringBuilder = StringBuilder()
 
-        //return super.toString()
+        for (plato in platos) {
+            stringBuilder.append("${plato.nombre} (${plato.tiempoPreparacion}) -> (${plato.ingredientes.joinToString(", ")})")
+        }
+        return stringBuilder.toString()
     }
-
 }
