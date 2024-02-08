@@ -32,12 +32,6 @@ class Plato(
             field = value
         }
 
-    init {
-        require(precio > 0.0) { "El campo 'precio' debe ser superior a 0, queremos hacernos ricos." }
-        require(tiempoPreparacion > 1) { "El campo 'tiempo' no puede ser igual o menor a 1, no hacemos magia." }
-    }
-
-
     //METODOS DE CLASE:
     /**
      * Agregar ingredientes: Añade un nuevo ingrediente a la lista de ingredientes del plato.
