@@ -1,11 +1,10 @@
 /**
- **Premisas y Requisitos:**
- * El nombre del plato no puede ser vacío.
- * El precio del plato debe ser mayor que 0.
- * El tiempo de preparación no podrá ser igual o inferior a 1.
- * Un ingrediente no puede ser vacío.
- * Considerar el uso de propiedades de Kotlin para validar automáticamente estas restricciones tanto al crear un plato
- * cómo al modificar sus valores.
+ * Representa la información de un plato.
+ *
+ * @param nombre : String - Nombre del plato.
+ * @param precio : Double - Precio del plto
+ * @param tiempoPreparacion : Int - Indica el tiempo estimado para preparar el plato en minutos.
+ * @param ingredientes: List<String> - Lista de ingredientes necesarios para el plato.
  */
 class Plato(
     nombre: String,

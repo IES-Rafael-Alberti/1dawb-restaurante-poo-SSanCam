@@ -1,8 +1,9 @@
 /**
- * - **Responsabilidades:**
- *   - Mantener un registro de los platos pedidos por un cliente.
- *   - `contPedidos`: Int - No pertenece a ningún pedido en concreto, sino que es un valor global a todos y se utilizará
- *   - para calcular automáticamente los números de los pedidos.
+ * Mantiene un registro de los platos pedidos por un cliente.
+ *
+ * @param numero : Int - Mantener un registro de los platos pedidos por un cliente.
+ * @param platos : List<Plato> - Lista de platos que componen el pedido.
+ * @param estado : String - Estado del pedido (por ejemplo, "pendiente", "preparación", "listo" y "servido"). Por defecto el pedido estará en estado pendiente.
  *
  */
 class Pedido(numero: Int, private val platos: MutableList<Plato>, estado: String = "Pendiente") {
